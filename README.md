@@ -57,11 +57,18 @@
 
 ## 🚀 快速开始
 
-### 环境要求
+### 方式一：Windows 绿色免安装便携版（推荐直接使用）
+无需安装 Node.js 或任何依赖环境：
+1. 前往 [**GitHub Releases 页面**](https://github.com/hangxing-lerarn/Prism-Collage-Studio/releases/latest) 下载最新的 `Prism-Collage-Studio-v1.1.0-win64-portable.zip`；
+2. 将压缩包完整解压到任意文件夹，直接双击 **`Prism拼图工作台.exe`** 即可启动。
+
+### 方式二：从源码安装与运行
+
+#### 环境要求
 - [Node.js](https://nodejs.org/) `>= 18.0.0`（推荐 LTS 版本）
 - Git
 
-### 安装与运行
+#### 启动步骤
 
 ```bash
 # 1. 克隆仓库
