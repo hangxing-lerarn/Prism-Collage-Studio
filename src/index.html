@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark" data-ui-theme="pro-dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prism Collage Studio · 无限画布异形分镜创意工作台</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- SVG 线性图标符号库（统一 1.65px 精致矢量描边，彻底告别杂乱系统彩色 Emoji） -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+    <symbol id="ico-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+      <line x1="12" y1="22" x2="12" y2="12"/>
+      <polyline points="22 8.5 12 12 2 8.5"/>
+    </symbol>
+    <symbol id="ico-cursor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/>
+    </symbol>
+    <symbol id="ico-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/>
+      <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/>
+      <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/>
+      <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+    </symbol>
+    <symbol id="ico-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6" cy="6" r="3"/>
+      <circle cx="6" cy="18" r="3"/>
+      <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+      <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+      <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+    </symbol>
+    <symbol id="ico-polygon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 3 21 9.5 17.5 20 6.5 20 3 9.5 12 3"/>
+      <circle cx="12" cy="3" r="1.6" fill="currentColor"/>
+      <circle cx="21" cy="9.5" r="1.6" fill="currentColor"/>
+      <circle cx="17.5" cy="20" r="1.6" fill="currentColor"/>
+      <circle cx="6.5" cy="20" r="1.6" fill="currentColor"/>
+      <circle cx="3" cy="9.5" r="1.6" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-cat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3.1-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/>
+      <path d="M8 14v.5"/><path d="M16 14v.5"/>
+      <path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/>
+    </symbol>
+    <symbol id="ico-gallery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <polyline points="21 15 16 10 5 21"/>
+    </symbol>
+    <symbol id="ico-frames" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="5" width="14" height="14" rx="2"/>
+      <path d="M16 9h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-2"/>
+    </symbol>
+    <symbol id="ico-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+      <polyline points="2 12 12 17 22 12"/>
+      <polyline points="2 17 12 22 22 17"/>
+    </symbol>
+    <symbol id="ico-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
+      <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
+      <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
+      <line x1="1" y1="14" x2="7" y2="14"/>
+      <line x1="9" y1="8" x2="15" y2="8"/>
+      <line x1="17" y1="16" x2="23" y2="16"/>
+    </symbol>
+    <symbol id="ico-undo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+    </symbol>
+    <symbol id="ico-redo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"/>
+    </symbol>
+    <symbol id="ico-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="3 6 5 6 21 6"/>
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+    </symbol>
+    <symbol id="ico-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"/>
+    </symbol>
+    <symbol id="ico-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </symbol>
+    <symbol id="ico-dice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/>
+      <circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/>
+      <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+      <circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/>
+      <circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-pipette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m2 22 1-1h3l9-9"/>
+      <path d="M3 21v-3l9-9"/>
+      <path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z"/>
+    </symbol>
+    <symbol id="ico-loupe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <line x1="21" y1="21" x2="16.35" y2="16.35"/>
+      <line x1="11" y1="8" x2="11" y2="14"/>
+      <line x1="8" y1="11" x2="14" y2="11"/>
+    </symbol>
+    <symbol id="ico-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </symbol>
+    <symbol id="ico-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <circle cx="12" cy="12" r="3"/>
+      <line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
+      <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+    </symbol>
+    <symbol id="ico-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="13.5" cy="6.5" r="1" fill="currentColor"/>
+      <circle cx="17.5" cy="10.5" r="1" fill="currentColor"/>
+      <circle cx="8.5" cy="7.5" r="1" fill="currentColor"/>
+      <circle cx="6.5" cy="12.5" r="1" fill="currentColor"/>
+      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.7-.77 1.7-1.7 0-.44-.17-.84-.44-1.14-.27-.29-.43-.69-.43-1.13 0-.93.77-1.7 1.7-1.7H16c3.31 0 6-2.69 6-6 0-4.96-4.49-8.33-10-8.33Z"/>
+    </symbol>
+    <symbol id="ico-silhouette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="7.2" r="3.5"/>
+      <path d="M4.5 21c1.2-5.2 4.2-8.2 7.5-8.2s6.3 3 7.5 8.2Z"/>
+      <line x1="9.2" y1="14.5" x2="15.8" y2="21"/>
+      <line x1="14.8" y1="14.5" x2="8.2" y2="21"/>
+    </symbol>
+  </svg>
+
+  <!-- 顶部极简毛玻璃主控条（仅保留全局工程、历史操作与核心预览导出，极致清爽） -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">
+        <div class="brand-badge">
+          <svg class="svg-ico"><use href="#ico-logo"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">PRISM</span>
+          <span class="brand-sub">创意拼图工作台</span>
+        </div>
+      </div>
+
+      <div class="divider-v"></div>
+
+      <!-- 工程与辅助视图折叠菜单 -->
+      <div class="dropdown-wrap">
+        <button class="btn btn-sm btn-ghost" id="btnMoreMenu">工程与视图 ▾</button>
+        <div class="dropdown-menu" id="moreDropdownMenu">
+          <button class="dropdown-item" id="btnOpenProj">📂 打开拼图工程 (.json)</button>
+          <button class="dropdown-item" id="btnSaveProj">💾 保存完整拼图工程</button>
+          <div class="menu-sep"></div>
+          <button class="dropdown-item" id="btnToggleGhostMenu">👁 框外透视预览：已开启</button>
+          <button class="dropdown-item" id="btnToggleSlotsMenu">🏷 显示槽位编号：已开启</button>
+          <button class="dropdown-item" id="btnThemeToggle" style="display:none;">切换主题</button>
+        </div>
+      </div>
+
+      <div class="quick-history-group">
+        <button class="btn btn-sm btn-icon" id="btnUndo" title="撤销上一步 (Ctrl+Z)" disabled>
+          <svg class="svg-ico"><use href="#ico-undo"/></svg>
+        </button>
+        <button class="btn btn-sm btn-icon" id="btnRedo" title="重做下一步 (Ctrl+Y)" disabled>
+          <svg class="svg-ico"><use href="#ico-redo"/></svg>
+        </button>
+        <button class="btn btn-sm btn-danger-soft" id="btnClearCanvasAll" title="一键清空画布内全部设计（保留左侧已导入的图片素材，支持 Ctrl+Z 撤回）">
+          <svg class="svg-ico"><use href="#ico-trash"/></svg>
+          <span>清空画布</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 右侧：3D 徽章/卡片预览 & 成品导出 -->
+    <div class="top-actions">
+      <button class="btn btn-goods-fx" id="btnOpenGoods3D" title="将当前拼图转为 3D 立体徽章 / 镭射闪卡进行多角度光效预览并导出预览图">
+        <svg class="svg-ico"><use href="#ico-sparkle"/></svg>
+        <span>3D 徽章/卡片预览</span>
+      </button>
+      <button class="btn btn-primary btn-export-hero" id="btnOpenExport" title="严格只保存唯一总外框内部的拼图成品">
+        <svg class="svg-ico"><use href="#ico-download"/></svg>
+        <span>导出成品</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 全屏无限画布底座 + 左右双悬浮毛玻璃功能舱 -->
+  <div class="workspace">
+    <!-- 中央全屏铺底的无限画布舞台 -->
+    <main class="infinite-stage" id="canvasViewport">
+      <canvas id="mainCanvas"></canvas>
+
+      <!-- 画布顶部中央：轻巧纯图标指针胶囊岛 + 微提示条（告别顶栏左栏重复打架！） -->
+      <div class="stage-top-hud">
+        <div class="pointer-island" id="mainToolStrip">
+          <button class="tool-btn active" data-tool="select" title="选择与构图模式 (V)：拖动图片调选区 / 滚轮缩放">
+            <svg class="svg-ico"><use href="#ico-cursor"/></svg>
+            <span>选择</span>
+            <kbd>V</kbd>
+          </button>
+          <button class="tool-btn" data-tool="hand" title="抓手平移无限画布 (H) · 按住空格或中键也可随时平移">
+            <svg class="svg-ico"><use href="#ico-hand"/></svg>
+            <span>抓手</span>
+            <kbd>H</kbd>
+          </button>
+          <button class="tool-btn" data-tool="cut-group" title="分镜切割刀 (C)：直线 / 弧线 / 碎裂切分">
+            <svg class="svg-ico"><use href="#ico-scissors"/></svg>
+            <span>切分镜</span>
+            <kbd>C</kbd>
+          </button>
+          <button class="tool-btn" data-tool="contour-pen" title="自由绘制唯一总外框 (M)">
+            <svg class="svg-ico"><use href="#ico-polygon"/></svg>
+            <span>画外框</span>
+            <kbd>M</kbd>
+          </button>
+          <button class="tool-btn" data-tool="sticker" title="贴饰防误触模式 (S)：锁定底层照片，只移动猫耳/小贴饰">
+            <svg class="svg-ico"><use href="#ico-cat"/></svg>
+            <span>贴饰锁</span>
+            <kbd>S</kbd>
+          </button>
+        </div>
+
+        <div class="hint-pill" id="toolHintText">
+          按住「空格+左键」或「中键」平移画布 · 在图上拖动调整选区，滚轮缩放
+        </div>
+        <div class="dpi-warning-pill" id="dpiWarningPill">
+          <span>⚠</span>
+          <span id="dpiWarningText">当前图片放大超过原图分辨率</span>
+        </div>
+      </div>
+
+      <!-- 选中自由相框时的画布内跟随快捷条 -->
+      <div class="floating-frame-bar" id="floatingFrameBar">
+        <button class="btn btn-sm" id="btnModeMoveFrame" title="拖拽移动、缩放或旋转相框本身">✥ 移相框</button>
+        <button class="btn btn-sm" id="btnModePanFrameImg" title="固定相框不动，左键拖拽与滚轮改变框内显示区域">🖼 调图区</button>
+        <button class="btn btn-sm" id="btnToggleFrameFollowCell" title="开启后：调整底下所属分镜图片大小与方向时，此相框同步跟随变换">🔗 随分镜联动</button>
+        <button class="btn btn-sm" id="btnQuickCropFrame" title="打开独立框选裁剪与旋转窗口">✂ 裁剪</button>
+      </div>
+
+      <div class="canvas-drop-overlay" id="viewportDropHint">
+        松开鼠标：导入图片并填入目标分镜格 / 相框
+      </div>
+
+      <!-- 底部无限画布视野胶囊 -->
+      <div class="zoom-hud">
+        <button class="btn btn-sm btn-icon" id="btnZoomOut" title="缩小视野">−</button>
+        <span id="zoomPercentLabel" class="zoom-pct">100%</span>
+        <button class="btn btn-sm btn-icon" id="btnZoomIn" title="放大视野">+</button>
+        <button class="btn btn-sm btn-ghost" id="btnZoomFit" title="将唯一总外框居中适配到视野中央">
+          <svg class="svg-ico" style="width:13px;height:13px;"><use href="#ico-target"/></svg>
+          <span>居中适配</span>
+        </button>
+        <div class="divider-v"></div>
+        <span id="canvasDimBadge" class="dim-badge">1920 × 1080 px</span>
+      </div>
+    </main>
+
+    <!-- ==================== 左侧悬浮毛玻璃创作舱（5大清晰模块 + 内部胶囊子页签） ==================== -->
+    <div class="left-floating-dock">
+      <nav class="icon-rail" id="leftIconRail">
+        <button class="rail-btn active" data-drawer="assets" title="本地图片素材库 & 预设模板">
+          <svg class="svg-ico rail-svg"><use href="#ico-gallery"/></svg>
+          <span>素材模板</span>
+        </button>
+        <button class="rail-btn" data-drawer="contour" title="唯一总外框：比例尺寸 / 徽章几何预设 / 手绘外框 / 画面配色">
+          <svg class="svg-ico rail-svg"><use href="#ico-polygon"/></svg>
+          <span>画布外框</span>
+        </button>
+        <button class="rail-btn" data-drawer="slicer" title="分镜切分：直线曲线刀 / 碎裂切分 / 卡扣撕纸胶卷边">
+          <svg class="svg-ico rail-svg"><use href="#ico-scissors"/></svg>
+          <span>分镜切分</span>
+        </button>
+        <button class="rail-btn" data-drawer="frames" title="叠加元素：自由叠放异形相框 & 连线局部特写放大镜">
+          <svg class="svg-ico rail-svg"><use href="#ico-frames"/></svg>
+          <span>相框特写</span>
+        </button>
+        <button class="rail-btn" data-drawer="stickers" title="贴饰与台词：兽耳漫符 / 台词气泡 / 拟声词贴纸 / 自定义去底贴纸">
+          <svg class="svg-ico rail-svg"><use href="#ico-cat"/></svg>
+          <span>贴饰台词</span>
+        </button>
+        <button class="rail-btn rail-btn-creative" data-drawer="creative" title="创意玩法：提取人物剪影轮廓作为画框，在轮廓内部切分多格放置其他角色！">
+          <svg class="svg-ico rail-svg"><use href="#ico-silhouette"/></svg>
+          <span>创意剪影</span>
+        </button>
+
+        <div class="rail-bottom-spacer"></div>
+        <button class="rail-btn rail-btn-bottom" data-drawer="settings" title="自定义界面外观皮肤 & 一键整幅画布画风预设">
+          <svg class="svg-ico rail-svg"><use href="#ico-palette"/></svg>
+          <span>风格设置</span>
+        </button>
+      </nav>
+
+      <div class="drawer-slide-slot">
+        <aside class="context-drawer" id="contextDrawer">
+          <div class="drawer-header">
+          <span id="drawerTitle">素材与模板库</span>
+          <button class="drawer-close-btn" id="btnCollapseDrawer" title="收起左侧抽屉 (再次点击左栏图标也可收起)">◀ 收起</button>
+        </div>
+
+        <!-- 模块 1：素材与模板（双子页签：本地图库 | 模板库） -->
+        <section class="drawer-pane active" id="pane-assets">
+          <div class="seg-tabs" data-tab-group="assets">
+            <button class="seg-tab active" data-subtab="assets-local">本地图片库</button>
+            <button class="seg-tab" data-subtab="assets-tpl">预设与模板</button>
+          </div>
+
+          <!-- 1A：本地图片库 -->
+          <div class="subtab-panel active" data-subpanel="assets-local">
+            <div class="drop-upload-box" id="sidebarDropZone">
+              <div class="upload-title">拖入图片或 Ctrl+V 粘贴截图</div>
+              <div class="upload-sub">可直接把卡片拖进画布分镜格/相框，或双击卡片填入</div>
+              <div style="display:flex; gap:6px; justify-content:center; margin-top:8px;">
+                <button class="btn btn-primary btn-sm" id="btnPickImages">+ 选取图片</button>
+                <button class="btn btn-sm" id="btnPickFolder">导入文件夹</button>
+              </div>
+            </div>
+
+            <div class="compact-toolbar">
+              <button class="btn btn-sm" id="btnAutoFillCells" style="flex:1;" title="按槽位顺序自动把图片填入空分镜格">一键填空格</button>
+              <button class="btn btn-sm" id="btnShuffleCells" title="随机打乱画布中各分镜格的图片位置">随机换位</button>
+              <button class="btn btn-sm btn-danger-soft" id="btnClearAssets" title="移除未在画布上使用的多余素材">清理未用</button>
+            </div>
+
+            <div id="assetCountInfo" class="muted-caption">已导入 0 张素材</div>
+            <div class="asset-grid" id="assetGrid"></div>
+          </div>
+
+          <!-- 1B：模板库 & 随机排版灵感 -->
+          <div class="subtab-panel" data-subpanel="assets-tpl">
+            <button class="btn btn-gacha-hero" id="btnGachaRoll" title="随机组合一套【分镜切法 + 画面主题配色 + 特色边框】排版方案 (快捷键 G)">
+              <svg class="svg-ico"><use href="#ico-dice"/></svg>
+              <span>随机生成排版灵感</span>
+            </button>
+
+            <div class="card-block">
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+                <label class="chk-line">
+                  <input type="checkbox" id="chkFollowTplRatio" checked />
+                  <span>套用时适配模板最佳比例</span>
+                </label>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <button class="btn btn-primary btn-sm" id="btnSaveAsCustomTpl" style="flex:1;">★ 存为我的模板</button>
+                <button class="btn btn-sm" id="btnImportTplFile">导入模板</button>
+              </div>
+            </div>
+
+            <div class="sub-pills" id="tplCategoryPills">
+              <button class="pill active" data-cat="all">全部</button>
+              <button class="pill" data-cat="anime">动漫/壁纸</button>
+              <button class="pill" data-cat="grid">网格/长图</button>
+              <button class="pill" data-cat="poster">海报/拍立得</button>
+              <button class="pill" data-cat="custom">我的模板</button>
+            </div>
+
+            <div class="tpl-grid" id="tplGrid"></div>
+          </div>
+        </section>
+
+        <!-- 模块 2：画布与唯一总外框（三子页签：尺寸异形 | 手绘外框 | 配色底板） -->
+        <section class="drawer-pane" id="pane-contour">
+          <div class="seg-tabs" data-tab-group="contour">
+            <button class="seg-tab active" data-subtab="contour-preset">尺寸与异形</button>
+            <button class="seg-tab" data-subtab="contour-draw">手绘外框</button>
+            <button class="seg-tab" data-subtab="contour-color">配色与底板</button>
+          </div>
+
+          <!-- 2A：尺寸比例与预设异形 -->
+          <div class="subtab-panel active" data-subpanel="contour-preset">
+            <div class="card-block">
+              <div class="section-head">
+                <span>外框比例与输出分辨率</span>
+                <span class="help-tip" title="无限画布中始终只有一个总外框，导出成品时严格只导出该外框内部的内容">?</span>
+              </div>
+              <div class="ratio-grid" id="ratioPresetGrid">
+                <button class="ratio-btn" data-ratio="1:1">1:1</button>
+                <button class="ratio-btn active" data-ratio="16:9">16:9</button>
+                <button class="ratio-btn" data-ratio="9:16">9:16</button>
+                <button class="ratio-btn" data-ratio="4:3">4:3</button>
+                <button class="ratio-btn" data-ratio="3:4">3:4</button>
+                <button class="ratio-btn" data-ratio="21:9">21:9</button>
+                <button class="ratio-btn" data-ratio="v-long">纵长图</button>
+                <button class="ratio-btn" data-ratio="h-long">横长卷</button>
+              </div>
+              <div class="form-row">
+                <span class="form-label">清晰度档</span>
+                <div style="display:flex; gap:4px;">
+                  <button class="btn btn-sm" data-res-tier="1080">1080P</button>
+                  <button class="btn btn-sm" data-res-tier="1440">2K</button>
+                  <button class="btn btn-sm" data-res-tier="2160">4K</button>
+                </div>
+              </div>
+              <div class="form-row">
+                <span class="form-label">像素尺寸</span>
+                <div style="display:flex; align-items:center; gap:4px;">
+                  <input type="number" class="input input-num" id="inputCanvasW" value="1920" min="100" max="12000" />
+                  <span style="color:var(--text-muted);">×</span>
+                  <input type="number" class="input input-num" id="inputCanvasH" value="1080" min="100" max="12000" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head">
+                <span>徽章与几何异形预设</span>
+                <label class="chk-line" style="font-weight:400;">
+                  <input type="checkbox" id="chkKeepContourAspect" checked />
+                  <span>锁定 1:1 保形</span>
+                </label>
+              </div>
+              <div class="shape-grid" id="silhouettePresetGrid"></div>
+            </div>
+          </div>
+
+          <!-- 2B：无限画布自由手绘外框 -->
+          <div class="subtab-panel" data-subpanel="contour-draw">
+            <div class="card-block">
+              <div class="section-head">
+                <span>在无限画布圈出唯一总外框</span>
+                <span class="help-tip" title="可在无限画布任意空白处绘制，闭合后自动设为新的唯一总外框；双击顶点可切换圆弧/折角">?</span>
+              </div>
+              <button class="btn btn-primary btn-sm" id="btnDrawCustomPolyContour">⬠ 锚点折线 / 曲线画外框</button>
+              <button class="btn btn-sm" id="btnDrawCustomFreeContour">✎ 鼠标按住随手圈出外框</button>
+              <div style="display:flex; gap:6px; margin-top:2px;">
+                <button class="btn btn-sm" id="btnEditContourNodes" style="flex:1;">🔧 拖拽微调顶点</button>
+                <button class="btn btn-sm" id="btnToggleContourSmooth" style="flex:1;">〰 圆滑/折角切换</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2C：画面主题色提取与底板描边 -->
+          <div class="subtab-panel" data-subpanel="contour-color">
+            <div class="card-block">
+              <div class="section-head">
+                <span>画面主题色提取</span>
+                <button class="btn btn-sm" id="btnEyedropperBg" style="padding:2px 7px;" title="从画面任意位置吸取颜色设为底色">
+                  <svg class="svg-ico" style="width:12px;height:12px;"><use href="#ico-pipette"/></svg>
+                  <span>吸管取色</span>
+                </button>
+              </div>
+              <div id="oshiPaletteRow" class="oshi-swatch-bar"></div>
+              <button class="btn btn-primary btn-sm" id="btnApplyOshiTheme" title="自动将画面提取的主色与辅色应用到渐变背景、边框与装饰">
+                <svg class="svg-ico" style="width:13px;height:13px;"><use href="#ico-sparkle"/></svg>
+                <span>一键套用画面配色</span>
+              </button>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head"><span>背景填充与外框描边</span></div>
+              <div class="form-row">
+                <span class="form-label">外框底色</span>
+                <select class="select" id="selBgMode" style="width:150px;">
+                  <option value="solid">纯色背景填充</option>
+                  <option value="gradient">双色渐变背景</option>
+                  <option value="transparent">透明无底 (异形推荐)</option>
+                </select>
+              </div>
+              <div class="form-row" id="bgColorRow">
+                <span class="form-label">颜色设定</span>
+                <div style="display:flex; align-items:center; gap:5px;">
+                  <input type="color" id="inputBgColor1" value="#0f172a" />
+                  <input type="color" id="inputBgColor2" value="#1e293b" style="display:none;" />
+                  <select class="select" id="selGradAngle" style="display:none; width:78px; padding:3px;">
+                    <option value="135">斜向</option>
+                    <option value="90">上下</option>
+                    <option value="0">左右</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <span class="form-label">外框留白</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngMargin" min="0" max="80" value="18" />
+                  <span class="val-tag" id="lblMargin">18px</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <span class="form-label">外框描边</span>
+                <div class="range-wrap">
+                  <input type="color" id="inputOuterStrokeColor" value="#ffffff" />
+                  <input type="range" id="rngOuterStroke" min="0" max="30" value="0" style="width:68px;" />
+                  <span class="val-tag" id="lblOuterStroke">0px</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 模块 3：分镜与特效切分（三子页签：基础切刀 | 玻璃碎裂 | 边框材质） -->
+        <section class="drawer-pane" id="pane-slicer">
+          <div class="seg-tabs" data-tab-group="slicer">
+            <button class="seg-tab active" data-subtab="slicer-basic">基础切刀</button>
+            <button class="seg-tab" data-subtab="slicer-shatter">玻璃碎裂</button>
+            <button class="seg-tab" data-subtab="slicer-edge">边框材质</button>
+          </div>
+
+          <!-- 3A：基础直线/折线/曲线切割刀 -->
+          <div class="subtab-panel active" data-subpanel="slicer-basic">
+            <div class="card-block">
+              <div class="section-head">
+                <span>切割刀模式</span>
+                <span class="help-tip" title="画到中间单击可拐弯续画；画到中间双击可暂存半截刀口（第二刀交汇即成 T/Y 分镜）；内部画闭合圈可直接挖出画中画子格">?</span>
+              </div>
+              <div class="tool-card-stack">
+                <button class="btn btn-sm slice-mode-btn active" data-cut-tool="cut-line">╱ 直线 / 折线切割刀 (L)</button>
+                <button class="btn btn-sm slice-mode-btn" data-cut-tool="cut-curve">∿ 锚点 C弧 / S曲线刀 (C)</button>
+                <button class="btn btn-sm slice-mode-btn" data-cut-tool="cut-free">✎ 手绘平滑曲线刀 (P)</button>
+              </div>
+              <button class="toggle-chip" id="btnAutoExtend" style="width:100%;">
+                ⇢ 自动延伸切透对面边界
+              </button>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head">
+                <span>已切分割线 (<span id="cutCountBadge">0</span>)</span>
+                <button class="btn btn-sm btn-danger-soft" id="btnClearAllCuts" style="padding:2px 7px;">清空刀口</button>
+              </div>
+              <div id="cutListBox" class="compact-scroll-list"></div>
+            </div>
+          </div>
+
+          <!-- 3B：碎裂分镜切分与折射铺满 -->
+          <div class="subtab-panel" data-subpanel="slicer-shatter">
+            <div class="card-block">
+              <div class="section-head">
+                <span>碎裂分镜切分</span>
+                <span class="help-tip" title="生成碎片后点击目标碎片，在右侧属性中开启「局部留色」即可快速做出黑白/彩色焦点反差效果">?</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                <button class="btn btn-sm slice-mode-btn" data-cut-tool="shatter-impact" title="点击画布任意中心点生成放射裂纹">放射裂纹</button>
+                <button class="btn btn-sm slice-mode-btn" data-cut-tool="shatter-slash" title="划出一道主线并在两侧生成斜向裂纹">斜向裂纹</button>
+                <button class="btn btn-sm" id="btnCrystalVoronoi" style="grid-column:span 2;">冰晶网格切分</button>
+              </div>
+              <div class="form-row">
+                <span class="form-label">碎片密度</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngShatterDensity" min="5" max="18" value="9" />
+                  <span class="val-tag" id="lblShatterDensity">9</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head"><span>同图贯穿与微错位折射</span></div>
+              <button class="btn btn-primary btn-sm" id="btnSpanSameImgAll">同图跨分镜无缝铺满</button>
+              <div class="form-row">
+                <span class="form-label">折射错位</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngRefractStrength" min="0" max="36" value="0" />
+                  <span class="val-tag" id="lblRefractStrength">0px</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3C：分割边材质（标准漫框 / 真凹凸拼图卡扣 / 手撕毛边 / 电影胶卷） -->
+          <div class="subtab-panel" data-subpanel="slicer-edge">
+            <div class="card-block">
+              <div class="section-head"><span>分割线边缘材质与间隙</span></div>
+              <div class="form-row">
+                <span class="form-label">边缘风格</span>
+                <select class="select" id="selEdgeStyle" style="width:156px;">
+                  <option value="classic">标准利落漫框</option>
+                  <option value="jigsaw">真·凹凸拼图卡扣边</option>
+                  <option value="torn">手撕画纸白毛边</option>
+                  <option value="film">复古电影胶卷齿孔框</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <span class="form-label">分镜间隙</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngGutter" min="0" max="60" value="14" />
+                  <span class="val-tag" id="lblGutter">14px</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <span class="form-label">漫框描边</span>
+                <div class="range-wrap">
+                  <button class="btn btn-sm btn-icon" id="btnEyedropperBorder" title="吸取画面颜色作为漫框描边色">
+                    <svg class="svg-ico" style="width:12px;height:12px;"><use href="#ico-pipette"/></svg>
+                  </button>
+                  <input type="color" id="inputCellBorderColor" value="#ffffff" />
+                  <input type="range" id="rngCellBorder" min="0" max="20" value="4" style="width:58px;" />
+                  <span class="val-tag" id="lblCellBorder">4px</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 模块 4：相框与局部特写放大镜（双子页签：自由异形相框 | 连线特写放大镜） -->
+        <section class="drawer-pane" id="pane-frames">
+          <div class="seg-tabs" data-tab-group="frames">
+            <button class="seg-tab active" data-subtab="frames-free">自由异形相框</button>
+            <button class="seg-tab" data-subtab="frames-loupe">特写放大镜</button>
+          </div>
+
+          <!-- 4A：自由异形相框 -->
+          <div class="subtab-panel active" data-subpanel="frames-free">
+            <label class="link-option-banner">
+              <input type="checkbox" id="chkDefaultFrameFollowCell" />
+              <div>
+                <div style="font-weight:600;">新建相框默认「随所属分镜联动」</div>
+                <div style="font-size:10.5px; color:var(--text-muted);">缩放或旋转底下分镜图片时，范围内相框一起调整（单个相框也可独立开关）</div>
+              </div>
+            </label>
+            <div class="shape-grid" id="freeFrameAddGrid"></div>
+          </div>
+
+          <!-- 4B：连线式局部特写放大镜 -->
+          <div class="subtab-panel" data-subpanel="frames-loupe">
+            <div class="card-block">
+              <div class="section-head">
+                <span>连线式局部细节放大镜</span>
+                <span class="help-tip" title="添加后把小瞄准圈拖到角色瞳孔、唇角或饰品上，大框即实时同步 2x~8x 超清特写！">?</span>
+              </div>
+              <div class="loupe-card-grid">
+                <button class="shape-btn" data-add-loupe="circle">
+                  <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="19" r="3"/><circle cx="19" cy="10" r="6.5"/><line x1="11.2" y1="16.8" x2="14.3" y2="14.5"/></svg>
+                  <span>圆形特写镜</span>
+                </button>
+                <button class="shape-btn" data-add-loupe="hex">
+                  <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="20" r="2.8"/><polygon points="19,3.5 24.5,6.8 24.5,13.2 19,16.5 13.5,13.2 13.5,6.8"/><line x1="10.2" y1="18" x2="14.5" y2="13.5"/></svg>
+                  <span>战术六边镜</span>
+                </button>
+                <button class="shape-btn" data-add-loupe="rect">
+                  <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="20" r="2.8"/><rect x="13" y="4" width="12" height="10" rx="2"/><line x1="10.2" y1="18" x2="14" y2="14"/></svg>
+                  <span>设定集方框</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 模块 5：贴饰与台词（合并兽耳漫符 + 气泡与拟声词 + 自定义去底贴纸！） -->
+        <section class="drawer-pane" id="pane-stickers">
+          <div class="seg-tabs" data-tab-group="stickers">
+            <button class="seg-tab active" data-subtab="stickers-ears">兽耳与漫符</button>
+            <button class="seg-tab" data-subtab="stickers-dialogue">气泡与拟声词</button>
+            <button class="seg-tab" data-subtab="stickers-custom">自定义贴纸</button>
+          </div>
+
+          <!-- 5A：兽耳猫脸 + 面部漫符 -->
+          <div class="subtab-panel active" data-subpanel="stickers-ears">
+            <div class="mini-guard-pill">
+              <span>🔒 贴饰防误触自动生效：拖动只移装饰，方向键可 1px 微调</span>
+            </div>
+            <div class="card-block">
+              <div class="section-head"><span>兽耳与猫脸套装（支持吸管染发色）</span></div>
+              <div class="shape-grid" id="stickerEarsGrid"></div>
+            </div>
+            <div class="card-block">
+              <div class="section-head"><span>面部配饰与二次元漫符</span></div>
+              <div class="shape-grid" id="stickerFxGrid"></div>
+            </div>
+          </div>
+
+          <!-- 5B：漫画台词气泡 + 漫画拟声词贴纸 -->
+          <div class="subtab-panel" data-subpanel="stickers-dialogue">
+            <div class="card-block">
+              <div class="section-head"><span>文字标题与台词气泡</span></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                <button class="btn btn-sm" data-add-text="plain">纯艺术标题</button>
+                <button class="btn btn-sm" data-add-text="tag">圆角标签框</button>
+                <button class="btn btn-sm" data-add-text="speech">椭圆台词框</button>
+                <button class="btn btn-sm" data-add-text="narration">双线旁白框</button>
+                <button class="btn btn-sm" data-add-text="burst" style="grid-column:span 2;">放射锯齿气泡框</button>
+              </div>
+            </div>
+            <div class="card-block">
+              <div class="section-head"><span>漫画拟声词贴纸</span></div>
+              <div class="shape-grid" id="stickerSfxGrid"></div>
+            </div>
+          </div>
+
+          <!-- 5C：自定义贴纸库（支持一键去白底/黑底） -->
+          <div class="subtab-panel" data-subpanel="stickers-custom">
+            <div class="card-block">
+              <button class="btn btn-primary btn-sm" id="btnUploadCustomSticker">+ 导入本地贴纸 / 装饰素材</button>
+              <div class="form-row">
+                <span class="form-label">自动去底</span>
+                <select class="select" id="selStickerBgRemove" style="width:154px;">
+                  <option value="none">保留原图透明通道</option>
+                  <option value="auto" selected>智能抠四角纯色底</option>
+                  <option value="white">一键抠除白色背景</option>
+                  <option value="black">一键抠除黑色背景</option>
+                </select>
+              </div>
+              <div class="form-row" id="stickerTolRow">
+                <span class="form-label">去底容差</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngStickerChromaTol" min="10" max="110" value="38" />
+                  <span class="val-tag" id="lblStickerChromaTol">38</span>
+                </div>
+              </div>
+            </div>
+            <div class="shape-grid" id="customStickerGrid"></div>
+          </div>
+        </section>
+
+        <!-- 模块 6（左下角沉底入口）：风格与外观设置（双子页签：界面皮肤 | 画布画风） -->
+        <section class="drawer-pane" id="pane-settings">
+          <div class="seg-tabs" data-tab-group="settings">
+            <button class="seg-tab active" data-subtab="settings-skin">界面皮肤</button>
+            <button class="seg-tab" data-subtab="settings-canvas">画布画风</button>
+          </div>
+
+          <!-- 6A：工作台界面外观与手感自定义 -->
+          <div class="subtab-panel active" data-subpanel="settings-skin">
+            <div class="card-block">
+              <div class="section-head"><span>界面主题基调</span></div>
+              <div class="skin-theme-grid" id="uiThemeSwitcher">
+                <button class="skin-theme-card active" data-ui-theme="pro-dark">
+                  <span class="theme-dot dot-dark"></span>
+                  <div class="skin-card-text">
+                    <strong>深色毛玻璃</strong>
+                    <span>深灰磨砂 · 最衬原图色彩</span>
+                  </div>
+                </button>
+                <button class="skin-theme-card" data-ui-theme="oshi-neon">
+                  <span class="theme-dot dot-oshi" id="oshiThemeLiveDot"></span>
+                  <div class="skin-card-text">
+                    <strong>动态氛围色</strong>
+                    <span>自动跟随当前画面主色发光</span>
+                  </div>
+                </button>
+                <button class="skin-theme-card" data-ui-theme="creamy-light">
+                  <span class="theme-dot dot-light"></span>
+                  <div class="skin-card-text">
+                    <strong>浅色亚克力</strong>
+                    <span>云白清透磨砂 · 明亮干净</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head">
+                <span>个性化外观细节</span>
+                <button class="btn btn-sm btn-ghost" id="btnResetCustomAccent" style="padding:1px 6px; font-size:10.5px;">跟随主题色</button>
+              </div>
+              <div class="form-row">
+                <span class="form-label">界面强调色</span>
+                <div class="accent-dot-row">
+                  <button class="accent-preset-dot" data-accent="#4f8ef7" style="background:#4f8ef7;" title="电光蓝"></button>
+                  <button class="accent-preset-dot" data-accent="#8b5cf6" style="background:#8b5cf6;" title="鸢尾紫"></button>
+                  <button class="accent-preset-dot" data-accent="#ec4899" style="background:#ec4899;" title="珊瑚粉"></button>
+                  <button class="accent-preset-dot" data-accent="#10b981" style="background:#10b981;" title="薄荷绿"></button>
+                  <button class="accent-preset-dot" data-accent="#f59e0b" style="background:#f59e0b;" title="琥珀金"></button>
+                  <input type="color" id="inpCustomAccent" value="#4f8ef7" title="自由选取界面强调色" />
+                </div>
+              </div>
+              <div class="form-row">
+                <span class="form-label">磨砂不透明度</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngGlassAlpha" min="55" max="96" value="80" />
+                  <span class="val-tag" id="lblGlassAlpha">80%</span>
+                </div>
+              </div>
+              <label class="chk-line">
+                <input type="checkbox" id="chkShowCanvasGrid" checked />
+                <span>显示无限画布背景点阵网格</span>
+              </label>
+              <label class="chk-line">
+                <input type="checkbox" id="chkShowStageAura" checked />
+                <span>显示外框周围环境背光氛围</span>
+              </label>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head"><span>面板推拉动效速度</span></div>
+              <div class="seg-tabs" id="motionSpeedGroup">
+                <button class="seg-tab active" data-motion="smooth">灵动阻尼</button>
+                <button class="seg-tab" data-motion="fast">清脆快速</button>
+                <button class="seg-tab" data-motion="none">关闭动效</button>
+              </div>
+              <button class="btn btn-sm" id="btnResetUISkin" style="margin-top:2px;">恢复默认界面外观</button>
+            </div>
+          </div>
+
+          <!-- 6B：整幅作品画布画风预设 & 全局质感后处理 -->
+          <div class="subtab-panel" data-subpanel="settings-canvas">
+            <div class="card-block">
+              <div class="section-head">
+                <span>一键整幅画风预设</span>
+                <span class="help-tip" title="无损切换整张作品的底色、间距、分割边材质与色调倾向，绝不破坏已切好的分镜线与图片构图，支持 Ctrl+Z 撤回">?</span>
+              </div>
+              <div class="canvas-preset-grid" id="canvasStylePresetGrid">
+                <button class="canvas-preset-card" data-cstyle="album">
+                  <strong>现代白框画册</strong>
+                  <span>浅底留白 · 利落细框</span>
+                </button>
+                <button class="canvas-preset-card" data-cstyle="poster">
+                  <strong>无框无缝海报</strong>
+                  <span>零间距 · 纯粹大片</span>
+                </button>
+                <button class="canvas-preset-card" data-cstyle="journal">
+                  <strong>手撕纸手账</strong>
+                  <span>暖米底 · 手撕白毛边</span>
+                </button>
+                <button class="canvas-preset-card" data-cstyle="cinema">
+                  <strong>复古电影胶卷</strong>
+                  <span>暗调齿孔框 · 胶片感</span>
+                </button>
+                <button class="canvas-preset-card" data-cstyle="jigsaw">
+                  <strong>立体拼图画报</strong>
+                  <span>主题渐变 · 凹凸卡扣</span>
+                </button>
+                <button class="canvas-preset-card" data-cstyle="manga_bw">
+                  <strong>黑白反差漫框</strong>
+                  <span>漫画粗边 · 高反差黑白</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head">
+                <span>整幅画面质感微调</span>
+                <span class="help-tip" title="作用于整张总外框成品的全局调色、暗角与颗粒质感，导出图片与 3D 预览时均同步生效">?</span>
+              </div>
+              <div class="form-row">
+                <span class="form-label">全局色调</span>
+                <select class="select" id="selGlobalTone" style="width:150px;">
+                  <option value="none">原色无滤镜</option>
+                  <option value="cool">清透冷调</option>
+                  <option value="warm">暖阳胶片</option>
+                  <option value="vivid">高饱和鲜明</option>
+                  <option value="muted">柔和低饱和</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <span class="form-label">电影感暗角</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngGlobalVignette" min="0" max="60" value="0" />
+                  <span class="val-tag" id="lblGlobalVignette">0%</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <span class="form-label">画纸/胶片颗粒</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngGlobalGrain" min="0" max="40" value="0" />
+                  <span class="val-tag" id="lblGlobalGrain">0%</span>
+                </div>
+              </div>
+              <button class="btn btn-sm" id="btnResetCanvasPostFx">重置全局色调与质感</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 模块 7（独立创意玩法）：人物轮廓剪影容器（提取人物剪影做边框 + 内部切分多格放其他角色） -->
+        <section class="drawer-pane" id="pane-creative">
+          <div class="card-block">
+            <div class="section-head">
+              <span>提取人物轮廓生成画框</span>
+              <span class="help-tip" title="选取一张人物全身/半身插画，提取她的剪影作为总外框（或自由剪影相框），即可在人物轮廓内部自由切分多格并放入其他角色！">?</span>
+            </div>
+            <button class="btn btn-gacha-hero" id="btnPickImgForSilhouette">
+              <svg class="svg-ico"><use href="#ico-silhouette"/></svg>
+              <span>选取本地人物图提取轮廓</span>
+            </button>
+            <div class="muted-caption" style="margin-top:2px;">或直接点击下方已导入的人物图开始提取：</div>
+            <div class="creative-pick-grid" id="creativeAssetPickGrid"></div>
+          </div>
+
+          <!-- 当前已激活的人物剪影框实时控制台 -->
+          <div class="card-block" id="activeSilhouetteControlCard" style="display:none;">
+            <div class="section-head">
+              <span id="activeSilTargetLabel">当前人物剪影总外框</span>
+              <button class="btn btn-sm btn-ghost" id="btnSilReExtract" style="padding:1px 6px; font-size:10.5px;">重新修补轮廓</button>
+            </div>
+
+            <div style="display:flex; gap:6px;" id="outerSilQuickActions">
+              <button class="btn btn-primary btn-sm" id="btnSilQuickSlice" style="flex:1;" title="用直线、弧线或碎裂刀在人物轮廓内部切出多个分镜格">✂ 在剪影内切分镜</button>
+              <button class="btn btn-sm" id="btnSilEditNodes" title="手动拖拽微调人物轮廓外边缘锚点">🔧 微调锚点</button>
+            </div>
+
+            <div class="form-row">
+              <span class="form-label">融合玩法</span>
+              <select class="select" id="selActiveSilBlend" style="width:168px;">
+                <option value="pure">纯粹剪影分镜（默认推荐）</option>
+                <option value="double_lineart">双重曝光 · 原人物线稿叠印</option>
+                <option value="double_soft">双重曝光 · 柔光虚影叠印</option>
+                <option value="hero_partial">局部原貌 · 半身原图+裙摆分镜</option>
+              </select>
+            </div>
+
+            <!-- 仅当开启玩法2(双重曝光)或玩法3(局部原貌)时展开 -->
+            <div id="activeSilFusionDetailBox" style="display:none; flex-direction:column; gap:7px; padding-top:4px; border-top:1px solid var(--border-subtle);">
+              <div class="form-row">
+                <span class="form-label">叠印浓度</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngActiveSilOpacity" min="8" max="100" value="48" />
+                  <span class="val-tag" id="lblActiveSilOpacity">48%</span>
+                </div>
+              </div>
+
+              <div class="form-row" id="activeSilLineColorRow" style="display:none;">
+                <span class="form-label">线稿色调</span>
+                <div style="display:flex; align-items:center; gap:5px;">
+                  <button class="accent-preset-dot sil-linecol-dot" data-lcol="#fef08a" style="background:#fef08a;" title="暖金刺绣线"></button>
+                  <button class="accent-preset-dot sil-linecol-dot" data-lcol="#ffffff" style="background:#ffffff;" title="纯白银丝线"></button>
+                  <button class="accent-preset-dot sil-linecol-dot" data-lcol="#0f172a" style="background:#0f172a; border-color:rgba(255,255,255,0.4);" title="深墨素描线"></button>
+                  <input type="color" id="inpActiveSilLineCol" value="#fef08a" />
+                </div>
+              </div>
+
+              <div id="activeSilPartialRows" style="display:none; flex-direction:column; gap:6px;">
+                <div class="form-row" id="activeSilKeepYRow">
+                  <span class="form-label">上部保留比</span>
+                  <div class="range-wrap">
+                    <input type="range" id="rngActiveSilKeepY" min="10" max="80" value="34" />
+                    <span class="val-tag" id="lblActiveSilKeepY">34%</span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <span class="form-label">过渡羽化</span>
+                  <div class="range-wrap">
+                    <input type="range" id="rngActiveSilFeather" min="4" max="35" value="14" />
+                    <span class="val-tag" id="lblActiveSilFeather">14%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ==================== 右侧悬浮毛玻璃「属性精调 & 图层穿透」一体式轻薄坞 ==================== -->
+    <!-- 收起时的右上角轻巧展开胶囊 -->
+    <button class="right-dock-expand-pill" id="btnExpandRightDock" title="展开右侧属性与图层管理面板">
+      <svg class="svg-ico"><use href="#ico-layers"/></svg>
+      <span>属性与图层</span>
+    </button>
+
+    <aside class="right-floating-dock" id="rightDock">
+      <div class="right-dock-header">
+        <div class="seg-tabs right-mode-tabs" id="rightDockTabs">
+          <button class="seg-tab active" data-right-view="split" title="上半区显示当前选中项属性，下半区同步显示图层栈">同屏双显</button>
+          <button class="seg-tab" data-right-view="inspector">仅属性</button>
+          <button class="seg-tab" data-right-view="layers">仅图层 (<span id="overlayCountBadge">0</span>)</button>
+        </div>
+        <button class="drawer-close-btn" id="btnCollapseRightDock" title="收起右侧面板释放画布空间">▶</button>
+      </div>
+
+      <!-- 上半区：选中对象动态属性精调区（未选中时显示精简引导） -->
+      <div class="right-inspector-pane" id="rightInspectorSection">
+        <div class="inspector-empty-hint" id="inspectorEmptyHint">
+          点选画布中的<b>分镜格、相框、贴饰或切线</b>即可在此精调参数与滤镜特效
+        </div>
+        <div class="floating-inspector" id="floatingInspector"></div>
+      </div>
+
+      <!-- 下半区：跨元素分层管理与重叠穿透控制区（与左侧素材库互不抢位！） -->
+      <div class="right-layers-pane" id="rightLayersSection">
+        <div class="layers-pane-head">
+          <div style="display:flex; align-items:center; gap:5px; font-weight:700; font-size:11.5px;">
+            <svg class="svg-ico" style="width:13px;height:13px;color:var(--accent);"><use href="#ico-layers"/></svg>
+            <span>分层与重叠穿透</span>
+          </div>
+          <span class="help-tip" title="重叠图片处理技巧：点击上层右侧 🔒 锁定后，画布鼠标点击与滚轮将直接穿透上层去移动缩放下层重叠图片！点 👁 可临时隐藏，▲/▼ 调整叠放次序">?</span>
+        </div>
+
+        <div class="layers-scroll-body">
+          <div class="layer-group-label">叠加图层（相框 / 贴饰 / 放大镜 / 文字）</div>
+          <div class="layer-list" id="overlayLayerList"></div>
+
+          <div class="layer-group-label" style="margin-top:8px;">底层切割分镜格</div>
+          <div class="layer-list" id="baseCellLayerList"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 弹窗 1：独立精修裁剪与旋转变换窗口 -->
+  <div class="modal-backdrop" id="cropModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span>✂ 单图独立框选裁剪与旋转变换</span>
+        <button class="btn btn-sm" id="btnCloseCropModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row" style="flex-wrap:wrap; gap:6px;">
+          <div style="display:flex; gap:5px; align-items:center;">
+            <span class="form-label">裁剪比例：</span>
+            <button class="btn btn-sm crop-ratio-btn active" data-cratio="free">自由框选</button>
+            <button class="btn btn-sm crop-ratio-btn" data-cratio="cell">跟随当前框比例</button>
+            <button class="btn btn-sm crop-ratio-btn" data-cratio="1:1">1:1</button>
+            <button class="btn btn-sm crop-ratio-btn" data-cratio="16:9">16:9</button>
+            <button class="btn btn-sm crop-ratio-btn" data-cratio="9:16">9:16</button>
+            <button class="btn btn-sm crop-ratio-btn" data-cratio="4:3">4:3</button>
+          </div>
+          <div style="display:flex; gap:5px;">
+            <button class="btn btn-sm" id="btnCropRotLeft">↺ 左转90°</button>
+            <button class="btn btn-sm" id="btnCropRotRight">↻ 右转90°</button>
+            <button class="btn btn-sm" id="btnCropFlipH">⇆ 水平翻转</button>
+            <button class="btn btn-sm" id="btnCropFlipV">⇅ 垂直翻转</button>
+          </div>
+        </div>
+        <div class="crop-stage-box">
+          <canvas id="cropCanvas" width="720" height="410"></canvas>
+        </div>
+        <div class="form-row">
+          <span class="form-label">精细角度微调 (-45° ~ +45°)</span>
+          <div class="range-wrap">
+            <input type="range" id="rngCropFineAngle" min="-45" max="45" step="0.5" value="0" style="width:240px;" />
+            <span class="val-tag" id="lblCropFineAngle">0°</span>
+            <button class="btn btn-sm" id="btnResetCropAngle">归零</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" id="btnResetFullCrop">重置全部裁剪</button>
+        <button class="btn" id="btnCancelCrop">取消</button>
+        <button class="btn btn-primary" id="btnApplyCrop">✓ 应用选区到当前框</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗 2：高清成品导出窗口 -->
+  <div class="modal-backdrop" id="exportModal">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <span>⬇ 导出总外框拼图成品</span>
+        <button class="btn btn-sm" id="btnCloseExportModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="font-size:11.5px; color:var(--text-secondary); line-height:1.45;">
+          严格只保存<b>当前唯一总外框内部</b>的拼图内容，无限画布外部空白与辅助网格绝不会进入成品。
+        </div>
+        <div class="form-row">
+          <span class="form-label">导出格式</span>
+          <select class="select" id="selExportFormat" style="width:220px;">
+            <option value="png">PNG 无损（支持圆形/异形透明底）</option>
+            <option value="webp">WebP 高清（支持圆形/异形透明底）</option>
+            <option value="jpeg">JPG 常规（无透明通道，自动垫底色）</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <span class="form-label">超清倍率</span>
+          <select class="select" id="selExportScale" style="width:220px;">
+            <option value="1">1x 外框原始像素</option>
+            <option value="1.5">1.5x 高清增强</option>
+            <option value="2">2x 超清双倍采样</option>
+            <option value="3">3x 印刷级超采样</option>
+          </select>
+        </div>
+        <div class="form-row" id="exportQualityRow" style="display:none;">
+          <span class="form-label">压缩质量</span>
+          <div class="range-wrap">
+            <input type="range" id="rngExportQuality" min="50" max="100" value="95" />
+            <span class="val-tag" id="lblExportQuality">95%</span>
+          </div>
+        </div>
+        <label style="display:flex; align-items:flex-start; gap:7px; cursor:pointer; font-size:12px; background:var(--bg-input); padding:9px; border-radius:8px; border:1px solid var(--border-subtle);">
+          <input type="checkbox" id="chkExportAutoTrim" checked style="margin-top:2px;" />
+          <div>
+            <div style="font-weight:600;">智能紧缩裁边 (Auto-Trim)</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">自动紧贴圆形或自定义异形外框边缘裁除多余透明留白。</div>
+          </div>
+        </label>
+        <div class="form-row">
+          <span class="form-label">输出尺寸</span>
+          <strong id="lblExportEstSize" style="color:var(--accent);">1920 × 1080 px</strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" id="btnCancelExport">取消</button>
+        <button class="btn btn-primary" id="btnConfirmExport">⬇ 选择位置并保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗 3：保存自定义模板窗口 -->
+  <div class="modal-backdrop" id="saveTplModal">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <span>★ 保存当前外框与分镜为模板</span>
+        <button class="btn btn-sm" id="btnCloseSaveTplModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <span class="form-label">模板名称</span>
+          <input type="text" class="input" id="inputCustomTplName" placeholder="例如：圆形徽章三分镜" style="flex:1;" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" id="btnExportTplDirectly">导出模板文件</button>
+        <button class="btn btn-primary" id="btnConfirmSaveTpl">保存到「我的模板」</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗 4：3D 徽章与镭射卡片立体预览台 -->
+  <div class="modal-backdrop" id="goods3dModal">
+    <div class="modal-card" style="width:820px;">
+      <div class="modal-header">
+        <span>✦ 3D 徽章与镭射卡片预览</span>
+        <button class="btn btn-sm" id="btnCloseGoods3D">✕</button>
+      </div>
+      <div class="modal-body" style="gap:10px;">
+        <div class="form-row" style="flex-wrap:wrap; gap:6px;">
+          <div style="display:flex; gap:5px;">
+            <button class="btn btn-sm foil-mode-btn active" data-foil="broken_glass">碎钻镭射膜</button>
+            <button class="btn btn-sm foil-mode-btn" data-foil="rainbow">彩虹素面镭射</button>
+            <button class="btn btn-sm foil-mode-btn" data-foil="glitter">细闪银葱星芒</button>
+            <button class="btn btn-sm foil-mode-btn" data-foil="glossy">高透亮膜扫光</button>
+          </div>
+          <div class="range-wrap" style="max-width:210px;">
+            <span class="form-label">光效强度</span>
+            <input type="range" id="rngFoilIntensity" min="0" max="100" value="68" style="width:90px;" />
+            <span class="val-tag" id="lblFoilIntensity">68%</span>
+          </div>
+        </div>
+
+        <div class="crop-stage-box" style="height:450px; cursor:pointer;">
+          <canvas id="goods3dCanvas" width="760" height="450"></canvas>
+        </div>
+
+        <div id="goods3dLockHint" style="font-size:11.5px; text-align:center; color:var(--text-secondary);">
+          移动鼠标预览 3D 流光角度 · 单击画面可定格锁定当前反光瞬间
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" id="btnCancelGoods3D">返回继续编辑</button>
+        <button class="btn btn-primary" id="btnExportGoodsShowcase">导出高清 3D 预览图</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗 5：创意玩法 · 提取人物轮廓工作窗（自动防漏初筛 + 画笔修补 + 立牌平滑外扩 + 双出口应用） -->
+  <div class="modal-backdrop" id="silModal">
+    <div class="modal-card" style="width:880px;">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <svg class="svg-ico" style="color:var(--accent-cyan);"><use href="#ico-silhouette"/></svg>
+          <span>提取人物轮廓生成异形画框</span>
+        </div>
+        <button class="btn btn-sm" id="btnCloseSilModal">✕</button>
+      </div>
+      <div class="modal-body" style="padding:14px;">
+        <div class="sil-modal-layout">
+          <!-- 左侧实时轮廓与遮罩交互舞台 -->
+          <div class="sil-stage-col">
+            <div class="crop-stage-box sil-stage-box" id="silStageBox" style="height:445px;">
+              <canvas id="silExtractCanvas" width="540" height="445"></canvas>
+              <div class="sil-zoom-hud" id="silZoomHud">
+                <button type="button" class="sil-zoom-btn" id="btnSilZoomOut" title="缩小画面 (Ctrl + 滚轮向下)">−</button>
+                <span class="sil-zoom-val" id="lblSilZoom" title="当前画面缩放倍率">100%</span>
+                <button type="button" class="sil-zoom-btn" id="btnSilZoomIn" title="放大画面 (Ctrl + 滚轮向上)">+</button>
+                <button type="button" class="sil-zoom-btn sil-zoom-reset" id="btnSilZoomReset" title="复位至 100% 适屏视图">复位</button>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--text-secondary); padding:0 2px; gap:6px;">
+              <span id="silVertexBadge" style="font-weight:600; color:var(--accent-cyan); white-space:nowrap;">已提取轮廓</span>
+              <span style="text-align:right;">Ctrl+滚轮缩放 · 滚轮调笔刷 · 空格/中键拖动平移 · 右键反擦</span>
+            </div>
+          </div>
+
+          <!-- 右侧三步精修控制栏 -->
+          <div class="sil-ctrl-col">
+            <div class="card-block">
+              <div class="section-head"><span>① 初筛提取方式</span></div>
+              <div class="seg-tabs">
+                <button class="seg-tab sil-seg-btn active" data-seg="edge_flood">智能防漏抠底</button>
+                <button class="seg-tab sil-seg-btn" data-seg="alpha">透明通道</button>
+                <button class="seg-tab sil-seg-btn" data-seg="lasso">手动套索</button>
+              </div>
+
+              <div id="silFloodParamsBox" style="display:flex; flex-direction:column; gap:6px; margin-top:2px;">
+                <div class="form-row">
+                  <span class="form-label">背景容差</span>
+                  <div class="range-wrap">
+                    <input type="range" id="rngSilTolerance" min="5" max="95" value="34" />
+                    <span class="val-tag" id="lblSilTolerance">34</span>
+                  </div>
+                </div>
+                <div class="form-row" title="针对浅色头纱、光环与浅色背景相近的画面，拉高可阻止背景漫水漏进衣服内部">
+                  <span class="form-label">浅边防漏锁</span>
+                  <div class="range-wrap">
+                    <input type="range" id="rngSilEdgeGuard" min="0" max="100" value="58" />
+                    <span class="val-tag" id="lblSilEdgeGuard">58%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="silLassoHintBox" style="display:none; flex-direction:column; gap:6px; font-size:11px; color:var(--warning);">
+                <span>在左图沿人物外缘依次点击（或双击结束）圈出主体范围：</span>
+                <button class="btn btn-sm btn-primary" id="btnSilFinishLasso">✓ 闭合完成套索初筛</button>
+              </div>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head">
+                <span>② 画笔细节修补</span>
+                <button class="btn btn-sm btn-ghost" id="btnSilUndoBrush" style="padding:1px 6px; font-size:10.5px;" disabled>↶ 撤回一笔</button>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px;">
+                <button class="btn btn-sm sil-brush-btn active" data-btool="add" title="涂抹漏掉的光环、头纱或裙摆以纳入边框">+ 保留主体笔</button>
+                <button class="btn btn-sm sil-brush-btn" data-btool="erase" title="抹除多余连入的地板反光或背景杂物">− 擦除背景笔</button>
+                <button class="btn btn-sm sil-brush-btn" data-btool="hero" style="grid-column:span 2;" title="可选：涂抹人物脸部/双手标记为保留原图区（用于局部原貌+裙摆分镜玩法）">★ 涂抹保留原人物面容区（可选）</button>
+              </div>
+              <div class="form-row">
+                <span class="form-label">笔刷大小</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngSilBrushSize" min="1" max="45" value="14" />
+                  <span class="val-tag" id="lblSilBrushSize">14px</span>
+                </div>
+              </div>
+              <div style="display:flex; gap:5px;">
+                <button class="btn btn-sm" id="btnSilFillAll" style="flex:1;">全图保留</button>
+                <button class="btn btn-sm" id="btnSilClearMask" style="flex:1;">全部清空后手涂</button>
+              </div>
+            </div>
+
+            <div class="card-block">
+              <div class="section-head"><span>③ 立牌包边与融合玩法</span></div>
+              <div class="form-row" title="向外平滑扩出一圈立牌包边，自动桥接细碎发丝与悬浮光环">
+                <span class="form-label">外扩包边</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngSilOffset" min="-8" max="20" value="3" />
+                  <span class="val-tag" id="lblSilOffset">+3px</span>
+                </div>
+              </div>
+              <div class="form-row" title="将像素锯齿收拢为圆润流畅的分镜外边框曲线">
+                <span class="form-label">轮廓平滑度</span>
+                <div class="range-wrap">
+                  <input type="range" id="rngSilSmooth" min="0.8" max="8.5" step="0.2" value="2.6" />
+                  <span class="val-tag" id="lblSilSmooth">2.6</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <span class="form-label">融合玩法</span>
+                <select class="select" id="selSilInitBlend" style="width:162px;">
+                  <option value="pure">纯粹剪影分镜（默认重点）</option>
+                  <option value="double_lineart">双重曝光 · 衣褶线稿叠印</option>
+                  <option value="double_soft">双重曝光 · 柔光虚影叠印</option>
+                  <option value="hero_partial">局部原貌 · 半身原图+裙摆分镜</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" id="btnCancelSilModal">取消</button>
+        <button class="btn" id="btnApplySilFreeFrame" style="border-color:var(--accent-border); color:var(--accent);">+ 添加为自由剪影相框</button>
+        <button class="btn btn-primary" id="btnApplySilOuter">✓ 设为唯一总外框（内部可切多格）</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="./engine/silhouettes.js"></script>
+  <script src="./engine/planarSlicer.js"></script>
+  <script src="./engine/fxLab.js"></script>
+  <script src="./engine/templates.js"></script>
+  <script src="./engine/stickers.js"></script>
+  <script src="./engine/renderer.js"></script>
+  <script src="./ui/cropModal.js"></script>
+  <script src="./ui/goods3dModal.js"></script>
+  <script src="./ui/silhouetteModal.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

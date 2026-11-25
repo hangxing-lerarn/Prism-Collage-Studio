@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Local packaged builds & archives
+release/
+dist/
+out/
+*.zip
+*.7z
+
+# Runtime user cache & custom local templates/stickers
+data/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.log
+npm-debug.log*
